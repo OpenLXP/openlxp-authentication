@@ -20,7 +20,7 @@ urlpatterns = [
 ]
 ```
 
-Access the `/metadata/samldb/` endpoint to view the configuration XML and verify it is correct (if AssertionConsumerService Location is incorrect, there are optional settings to fix it).
+Access the `/saml/metadata/` endpoint to view the configuration XML and verify it is correct (if AssertionConsumerService Location is incorrect, there are optional settings to fix it).
 
 Upload the XML to needed IDPs.
 
