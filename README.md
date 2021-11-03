@@ -170,9 +170,9 @@ LOGIN_REDIRECT_URL = 'http://www.google.com'
 
 The OVERIDE_HOST setting is used when Django is not able to accurately determine the host and port being used (this can occur in certain reverse proxy configurations).  
 
-The setting must follow the format `www.hostname.com:port` which may be preceded by either "http://" or "https://".
+The setting must follow the format `http://www.hostname.com:port`, `https://` may be used instead.
 
-If this setting is supplied, STRATEGY and BAD_HOST should also be set.
+If this setting is supplied, SOCIAL_AUTH_STRATEGY and BAD_HOST should also be set.
 
 ```ini
 OVERIDE_HOST = 'http://localhost:8000'
@@ -182,7 +182,7 @@ OVERIDE_HOST = 'http://localhost:8000'
 
 The BAD_HOST setting is used to remove part of the host and port string if the automatically detected configuration is incorrect.
 
-If the OVERIDE_HOST setting contains "http://" or "https://", then this setting should too.
+Similar to OVERIDE_HOST, this setting should also start with either `http://` or `https://`.
 
 The setting is required if using the OVERIDE_HOST setting.
 
@@ -190,10 +190,10 @@ The setting is required if using the OVERIDE_HOST setting.
 BAD_HOST = 'http://localhost'
 ```
 
-#### STRATEGY
+#### SOCIAL_AUTH_STRATEGY
 
-The STRATEGY setting is required if using the OVERIDE_HOST setting.  OpenLXP-Authentication provides a strategy but custom solutions can be created and referenced in this setting.
+The SOCIAL_AUTH_STRATEGY setting is required if using the OVERIDE_HOST setting.  OpenLXP-Authentication provides a strategy but custom solutions can be created and referenced in this setting.
 
 ```ini
-STRATEGY = 'openlxp_authentication.models.SAMLDBStrategy'
+SOCIAL_AUTH_STRATEGY = 'openlxp_authentication.models.SAMLDBStrategy'
 ```
