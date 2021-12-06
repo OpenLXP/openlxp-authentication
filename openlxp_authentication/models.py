@@ -17,6 +17,10 @@ class SAMLConfiguration(Model):
         return dict.fromkeys(["attr_" + attr for attr in settings.USER_ATTRIBUTES], '')
     attribute_mapping = models.JSONField(default=attributes)
 
+    def endpoint(self):
+        """Returns the relative endpoint to trigger a login using this configuration"""
+        return f"/login/{SAMLDBAuth.name}/?idp=" + self.name
+
 
 class SAMLDBAuth(SAMLAuth):
     """Authentication backend that uses SAML configurations from the database"""
