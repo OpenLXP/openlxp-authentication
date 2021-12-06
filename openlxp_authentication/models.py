@@ -1,6 +1,6 @@
+from django.conf import settings
 from django.db import models
 from django.db.models.base import Model
-from django.conf import settings
 from social_core.backends.saml import SAMLAuth, SAMLIdentityProvider
 from social_django.strategy import DjangoStrategy
 
@@ -37,6 +37,7 @@ class SAMLDBAuth(SAMLAuth):
 
 class SAMLDBStrategy(DjangoStrategy):
     """Strategy to use a custom hostname and port if provided"""
+
     def build_absolute_uri(self, path=None):
         baseurl = super().build_absolute_uri(path=path)
         host = getattr(settings, 'OVERIDE_HOST', False)
