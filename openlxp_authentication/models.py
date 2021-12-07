@@ -1,6 +1,6 @@
+from django.conf import settings
 from django.db import models
 from django.db.models.base import Model
-from django.conf import settings
 from social_core.backends.saml import SAMLAuth, SAMLIdentityProvider
 from social_django.strategy import DjangoStrategy
 
@@ -16,6 +16,10 @@ class SAMLConfiguration(Model):
         """Creates JSON dictionary mapping user attributes"""
         return dict.fromkeys(["attr_" + attr for attr in settings.USER_ATTRIBUTES], '')
     attribute_mapping = models.JSONField(default=attributes)
+
+    def endpoint(self):
+        """Returns the relative endpoint to trigger a login using this configuration"""
+        return f"/login/{SAMLDBAuth.name}/?idp=" + self.name
 
 
 class SAMLDBAuth(SAMLAuth):
@@ -33,6 +37,7 @@ class SAMLDBAuth(SAMLAuth):
 
 class SAMLDBStrategy(DjangoStrategy):
     """Strategy to use a custom hostname and port if provided"""
+
     def build_absolute_uri(self, path=None):
         baseurl = super().build_absolute_uri(path=path)
         host = getattr(settings, 'OVERIDE_HOST', False)

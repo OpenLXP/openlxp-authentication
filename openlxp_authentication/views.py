@@ -1,7 +1,6 @@
 from django.http.response import HttpResponse
 from django.urls import reverse
 from social_django.utils import load_backend, load_strategy
-from .models import SAMLDBStrategy
 
 
 def saml_metadata_view(request):
