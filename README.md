@@ -108,7 +108,7 @@ SUPPORT_CONTACT = {
 
 #### USER_ATTRIBUTES
 
-The USER_ATTRIBUTES setting list the attributes of the User model that should be retreived from the IDP.
+The USER_ATTRIBUTES setting list the attributes of the User model that should be retrieved from the IDP.
 
 This setting is used to set the default value for the attribute map in the IDP configuration
 
@@ -121,7 +121,7 @@ USER_ATTRIBUTES = ["user_permanent_id",
 
 #### AUTHENTICATION_BACKENDS
 
-The AUTHENTICATION_BACKENDS setting sets what authentication services should be avaliable.
+The AUTHENTICATION_BACKENDS setting sets what authentication services should be available.
 
 This setting must include `'openlxp_authentication.models.SAMLDBAuth'`, but others can included as desired.
 
@@ -152,7 +152,7 @@ INSTALLED_APPS = [
 
 #### SESSION_EXPIRATION
 
-The SESSION_EXPIRATION setting has the Django session expiration match an experiation supplied by the IDP.
+The SESSION_EXPIRATION setting has the Django session expiration match an expiration supplied by the IDP.
 
 ```ini
 SESSION_EXPIRATION = True
